@@ -1,0 +1,134 @@
+/* #region 
+ * MARK:标题
+ */
+/* 一级标题 */
+h1{
+  text-align: center;
+}
+
+/* 标题附加信息 */
+p:has(time){
+  &:hover{
+    text-decoration: none;
+  }
+  &:has(audio){
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    /* border-bottom: 1px solid ; */
+
+    time{
+      display: inline-block;
+    }
+  }
+  text-align: right;
+}
+
+/* 取消带附加信息标题的外轮廓 */
+h4:has(+ p>time),
+h3:has(+ p>time),
+h2:has(+ p>time),
+h1:has(+ p>time){
+  margin-bottom: 0px;
+}
+/*#endregion*/
+
+/* #region
+ * MARK:正文
+ */
+/* 首行缩进 */
+div.markdown-body>p{
+  text-indent:2em;
+}
+
+/* 表格内容居中 */
+table.center{
+  & th{
+    text-align: center;
+  }
+  & td{
+    text-align: center;
+  }
+}
+
+/* 表格 */
+table {
+  /* 单元格对角线 */
+  & .cell_slash {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, transparent 49%, grey 50%, transparent 51%);
+    }
+  }
+
+  /* 单元格反对角线 */
+  & .cell_backslash {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top right, transparent 49%, grey 50%, transparent 51%);
+    }
+  }
+}
+
+em {
+  color: chartreuse;
+}
+
+blockquote {
+  --comment-line-height: 0.6rem;
+
+  &:has(.comment) {
+    & *{
+      /* 注释元素样式 */
+      padding: 0.1rem 0rem 0.1rem 0rem;
+      font-size: var(--comment-line-height);
+      line-height: calc(var(--comment-line-height) + 0.1rem);
+
+      /* 取消注释元素的下划线偏移 */
+      &:hover{
+        text-underline-offset: unset;
+      }
+    }
+  }
+}
+
+/* 超链接 */
+a{
+  color:unset;
+}
+/* #endregion */
+
+/* #region
+ * MARK:交互
+ */
+/* 交互 */
+p:hover{
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+*:hover::before{
+  border:none !important;
+}
+
+.markdown-body:has(.ruby-area:checked){
+  rt{
+    display: none;
+  }
+}
