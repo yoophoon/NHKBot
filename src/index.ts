@@ -5,6 +5,8 @@ import fs from "fs";
 import path from "path";
 import { exec } from "child_process";
 
+const days = 1
+
 
 type TArticleInfo = {
   url:string,
@@ -113,7 +115,7 @@ function transMediaToMP3(articleInfo: TArticleInfo) {
     }
 
     return url
-  },getDate())
+  },getDate(days))
 
   let news_list_index = 0
 
